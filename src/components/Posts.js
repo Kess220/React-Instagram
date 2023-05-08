@@ -48,7 +48,7 @@ function Posts() {
   return (
     <>
       {posts.map((post, index) => (
-        <div key={index} className="post">
+        <div data-test="post" key={index} className="post">
           <div className="topo">
             <div className="usuario">
               <img src={post.imagemUsuario} alt={post.usuario} />
@@ -61,6 +61,7 @@ function Posts() {
 
           <div className="conteudo">
             <img
+              data-test="post-image"
               onDoubleClick={() => curtir(index)}
               className="img-post"
               src={post.imagemPost}
@@ -72,6 +73,7 @@ function Posts() {
             <div className="acoes">
               <div>
                 <ion-icon
+                  data-test="like-post"
                   onClick={(e) => {
                     curtir(index);
                   }}
@@ -84,6 +86,7 @@ function Posts() {
               </div>
               <div>
                 <ion-icon
+                  data-test="save-post"
                   onClick={(event) => {
                     event.target.name =
                       event.target.name === "bookmark"
@@ -100,7 +103,8 @@ function Posts() {
               <img src="assets/img/respondeai.svg" alt="respondeai" />
               <div className="texto">
                 Curtido por <strong>{post.curtidoPor}</strong>{" "}
-                <strong>{post.curtidas}</strong> pessoas
+                <strong data-test="likes-number">{post.curtidas}</strong>{" "}
+                pessoas
               </div>
             </div>
           </div>
