@@ -45,6 +45,22 @@ function Posts() {
     }
   }
 
+  function curtirFt(index) {
+    const novosPosts = [...posts];
+    if (!novosPosts[index].curtiu) {
+      novosPosts[index].curtidas += 1;
+    }
+    novosPosts[index].curtiu = true;
+    setPosts(novosPosts);
+
+    const iconeCoracao = document.querySelector(
+      `.post:nth-of-type(${index + 1}) .icone-coracao`
+    );
+
+    iconeCoracao.setAttribute("name", "heart");
+    iconeCoracao.classList.add("coracao-ativo");
+  }
+
   return (
     <>
       {posts.map((post, index) => (
@@ -62,7 +78,7 @@ function Posts() {
           <div className="conteudo">
             <img
               data-test="post-image"
-              onDoubleClick={() => curtir(index)}
+              onDoubleClick={() => curtirFt(index)}
               className="img-post"
               src={post.imagemPost}
               alt={post.usuario}
